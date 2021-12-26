@@ -1,13 +1,25 @@
 import React from "react";
+import { Route, Routes, useParams } from "react-router-dom";
+
 import "./App.css";
 
 import HomePage from "./pages/homepage/homepage.component";
 
-function App() {
+const HatsPage = (props) => {
+  console.log(props);
   return (
     <div>
-      <HomePage />
+      <h1>hats page</h1>
     </div>
+  );
+};
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/shop/hats" element={<HatsPage />} />
+    </Routes>
   );
 }
 
