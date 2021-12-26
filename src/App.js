@@ -4,23 +4,19 @@ import { Route, Routes, useParams } from "react-router-dom";
 import "./App.css";
 
 import HomePage from "./pages/homepage/homepage.component";
-
-const HatsPage = (props) => {
-  console.log(props);
-  return (
-    <div>
-      <h1>hats page</h1>
-    </div>
-  );
-};
+import ShopPage from "./pages/shop/shop.component";
+import Header from "./components/header/header.component";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/shop/hats" element={<HatsPage />} />
-    </Routes>
-  );
+   <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shop" element={<ShopPage />} />
+      </Routes>
+   </div>
+  )
 }
 
 export default App;
