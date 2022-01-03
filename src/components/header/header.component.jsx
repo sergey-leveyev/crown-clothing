@@ -17,11 +17,6 @@ const Header = () => {
         <Link className="option" to="/shop">
           CONTACT
         </Link>
-        {localStorage.name ? (
-          <div className="option">SIGN OUT</div>
-        ) : (
-          <Link> SIGN IN</Link>
-        )}
       </div>
     </div>
   );
