@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes, useParams } from "react-router-dom";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
 
@@ -9,13 +9,15 @@ import Header from "./components/header/header.component";
 import Auto from "./pages/Auto/Auto";
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+  console.log(isAuth);
   return (
     <div>
-      <Header />
+      <Header isAuth={isAuth} setIsAuth={setIsAuth} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
-        <Route path="/signin" element={<Auto />} />
+        <Route path="/signin" element={<Auto setIsAuth={setIsAuth} />} />
       </Routes>
     </div>
   );
