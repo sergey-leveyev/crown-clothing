@@ -10,7 +10,7 @@ import Auto from "./pages/Auto/Auto";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  console.log(isAuth);
+  
   return (
     <div>
       <Header isAuth={isAuth} setIsAuth={setIsAuth} />

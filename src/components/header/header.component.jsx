@@ -7,7 +7,6 @@ import { ReactComponent as Logo } from "../../assests/crown.svg";
 import "./header.styles.scss";
 
 const Header = ({ isAuth, setIsAuth }) => {
-  console.log(isAuth);
   const signUserOut = () => {
     signOut(auth).then(() => {
       localStorage.clear();
@@ -30,7 +29,9 @@ const Header = ({ isAuth, setIsAuth }) => {
         {!isAuth ? (
           <Link to="/signin">Login</Link>
         ) : (
-          <button onClick={signUserOut}>Log out</button>
+          <div className="option" onClick={signUserOut}>
+            Log out
+          </div>
         )}
       </div>
     </div>

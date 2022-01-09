@@ -60,10 +60,12 @@ function SignIn({ setIsAuth }) {
           required
         />
 
-        <CustomButton type="submit">sing in</CustomButton>
-        <CustomButton signInWithGoogle={signInWithGoogle}>
-          sing in with google
-        </CustomButton>
+        <div className="buttons">
+          <CustomButton type="submit">sing in</CustomButton>
+          <CustomButton signInWithGoogle={signInWithGoogle}>
+            sing in with google
+          </CustomButton>
+        </div>
       </form>
     </div>
   );
