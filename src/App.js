@@ -7,6 +7,8 @@ import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import Auto from "./pages/Auto/Auto";
+// import {createUserProfileDocument} from "./firebase/firebase"
+
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
