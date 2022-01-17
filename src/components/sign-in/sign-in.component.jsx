@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth, provider, db } from "../../firebase/firebase";
 import { signInWithPopup } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs, getDoc } from "firebase/firestore";
 
 import "./sign-in.styles.scss";
 
@@ -47,6 +47,16 @@ function SignIn({ setIsAuth }) {
       createUser();
     });
   };
+
+  //Add a way to check if the user exists
+
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const data = await getDocs(usersCollectionRef);
+  //     console.log(data);
+  //   };
+  //   getUsers();
+  // }, []);
 
   return (
     <div className="sign-in">
