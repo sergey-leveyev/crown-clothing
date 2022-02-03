@@ -2,10 +2,10 @@ import "./Auto.scss";
 
 import SignIn from "../../components/sign-in/sign-in.component";
 
-const Auto = ({ setIsAuth }) => {
+const Auto = () => {
   return (
     <div>
-      <SignIn setIsAuth={setIsAuth} />
+      <SignIn />
     </div>
   );
 };

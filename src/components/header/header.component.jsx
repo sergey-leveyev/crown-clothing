@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
+import { setCurrentUser } from "../../redux/user/user.actions";
 
 import { ReactComponent as Logo } from "../../assests/crown.svg";
 
 import "./header.styles.scss";
 
-const Header = ({ isAuth, setIsAuth }) => {
+const Header = () => {
+  const isAuth = useSelector((state) => {
+    console.log("state from header", state);
+    const { userReducer } = state;
+    return userReducer.isAuth;
+  });
+
+  const dispatch = useDispatch();
+
   const signUserOut = () => {
     signOut(auth).then(() => {
       localStorage.clear();
-      setIsAuth(false);
+      dispatch(setCurrentUser(false));
     });
   };
 

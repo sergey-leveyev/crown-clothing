@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
@@ -9,17 +8,14 @@ import Header from "./components/header/header.component";
 import Auto from "./pages/Auto/Auto";
 // import {createUserProfileDocument} from "./firebase/firebase"
 
-
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
-  
   return (
     <div>
-      <Header isAuth={isAuth} setIsAuth={setIsAuth} />
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
-        <Route path="/signin" element={<Auto setIsAuth={setIsAuth} />} />
+        <Route path="/signin" element={<Auto />} />
       </Routes>
     </div>
   );

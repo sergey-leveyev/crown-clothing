@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth, provider, db } from "../../firebase/firebase";
 import { signInWithPopup } from "firebase/auth";
 import { addDoc, collection, getDocs, getDoc } from "firebase/firestore";
+import { setCurrentUser } from "../../redux/user/user.actions";
 
 import "./sign-in.styles.scss";
 
-function SignIn({ setIsAuth }) {
+function SignIn() {
+  const test = useSelector((state) => {
+    console.log("from sign in", state);
+  });
+
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -42,8 +50,7 @@ function SignIn({ setIsAuth }) {
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
-      localStorage.setItem("isAuth", true);
-      setIsAuth(true);
+      dispatch(setCurrentUser(true));
       createUser();
     });
   };
