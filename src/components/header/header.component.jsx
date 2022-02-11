@@ -10,7 +10,6 @@ import "./header.styles.scss";
 
 const Header = () => {
   const isAuth = useSelector((state) => {
-    console.log("state from header", state);
     const { userReducer } = state;
     return userReducer.isAuth;
   });

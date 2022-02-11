@@ -10,10 +10,6 @@ import { setCurrentUser } from "../../redux/user/user.actions";
 import "./sign-in.styles.scss";
 
 function SignIn() {
-  const test = useSelector((state) => {
-    console.log("from sign in", state);
-  });
-
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
