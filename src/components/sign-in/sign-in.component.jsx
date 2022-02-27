@@ -14,6 +14,19 @@ function SignIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [existsUsers, setExistsUsers] = useState([]);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(usersCollectionRef);
+      const users = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setExistsUsers(users);
+    };
+
+    getUsers();
+  }, []);
+
+  // console.log("existsUsers >>>>>", existsUsers);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,22 +57,20 @@ function SignIn() {
     });
   };
 
+  //Checking for an existing user (needs improvement)
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
       dispatch(setCurrentUser(true));
-      createUser();
+
+      for (let i = 0; i < existsUsers.length; i++) {
+        if (existsUsers[i].email === auth.currentUser.email) {
+          break;
+        } else if (existsUsers.length - 1 === i) {
+          createUser();
+        }
+      }
     });
   };
-
-  //Add a way to check if the user exists
-
-  // useEffect(() => {
-  //   const getUsers = async () => {
-  //     const data = await getDocs(usersCollectionRef);
-  //     console.log(data);
-  //   };
-  //   getUsers();
-  // }, []);
 
   return (
     <div className="sign-in">
